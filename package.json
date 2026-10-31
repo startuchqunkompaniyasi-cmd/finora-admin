@@ -1,0 +1,26 @@
+{
+  "name": "finora",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Finora - personal finance assistant. Know your money. Control your future.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "dependencies": {
+    "chart.js": "^4.4.7",
+    "compression": "^1.8.2",
+    "express": "^4.21.2",
+    "helmet": "^8.3.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8"
+  },
+  "devDependencies": {
+    "@fontsource-variable/manrope": "^5.1.1"
+  }
+}

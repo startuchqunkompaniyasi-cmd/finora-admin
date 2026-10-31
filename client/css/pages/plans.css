@@ -1,0 +1,113 @@
+/* ==========================================================================
+   pages/plans.css - Free / Premium / Mega Premium
+   ========================================================================== */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: var(--space-5);
+  align-items: stretch;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+}
+
+.plan.is-current { border-color: var(--positive); }
+
+.plan--premium { border-color: color-mix(in srgb, var(--focus) 45%, var(--border)); }
+
+.plan--mega {
+  background: var(--hero-bg);
+  border-color: transparent;
+  color: var(--hero-text);
+}
+
+.plan__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.plan__mark { color: var(--focus); }
+.plan--mega .plan__mark { color: var(--hero-positive); }
+
+.plan__name {
+  font-size: var(--text-lg);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.plan__tagline {
+  margin-top: var(--space-1);
+  color: var(--text-muted);
+}
+
+.plan--mega .plan__tagline,
+.plan--mega .plan__includes { color: var(--hero-muted); }
+
+.plan__price {
+  margin-top: var(--space-4);
+  font-size: var(--text-xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.plan--premium .plan__price,
+.plan--mega .plan__price { font-size: var(--text-md); font-weight: 700; letter-spacing: 0; }
+
+.plan__includes {
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.plan__features {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.plan__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.plan__check {
+  flex: none;
+  margin-top: 1px;
+  color: var(--positive);
+}
+
+.plan--mega .plan__check { color: var(--hero-positive); }
+
+.plan__badge {
+  flex: none;
+  margin-left: auto;
+}
+
+.plan--mega .plan__badge {
+  background: var(--hero-chip);
+  color: var(--hero-text);
+}
+
+.plan--mega .btn--primary {
+  background: #fff;
+  color: var(--navy-900);
+}
+
+.plans__note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  max-width: 72ch;
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.plans__note .icon { flex: none; margin-top: 2px; }

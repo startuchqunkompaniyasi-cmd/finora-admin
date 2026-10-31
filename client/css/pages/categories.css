@@ -1,0 +1,102 @@
+/* ==========================================================================
+   pages/categories.css
+   ========================================================================== */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.toolbar .choice--segmented { width: min(320px, 100%); }
+.toolbar .field:not(.choice) { width: min(220px, 100%); }
+
+.cats {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+@media (min-width: 1000px) {
+  .cats { grid-template-columns: 340px minmax(0, 1fr); align-items: start; }
+  .cats__chart { position: sticky; top: calc(var(--topbar-height) + var(--space-3)); }
+}
+
+.donut {
+  position: relative;
+  height: 240px;
+  margin-top: var(--space-4);
+}
+
+.donut__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 22%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.donut__label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.donut__value {
+  font-size: var(--text-md);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.cats__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.cat-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-4);
+  transition: border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.cat-card:hover { border-color: var(--border-strong); }
+.cat-card:active { transform: scale(0.99); }
+
+.cat-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.cat-card__top,
+.cat-card__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.cat-card__total { font-weight: 800; }
+
+.cat-card__meta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cat-card.is-empty .cat-card__total { color: var(--text-muted); font-weight: 700; }

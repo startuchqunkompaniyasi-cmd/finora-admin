@@ -1,0 +1,176 @@
+/* ==========================================================================
+   tokens.css - the whole visual language as CSS variables.
+   Light values on :root, dark overrides on [data-theme="dark"].
+   Components must only use these tokens, never raw hex values.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Manrope Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("../assets/fonts/manrope-cyrillic-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("../assets/fonts/manrope-latin-ext-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Manrope Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("../assets/fonts/manrope-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light;
+
+  /* Typography */
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2rem;
+  --text-hero: clamp(2.125rem, 1.4rem + 3vw, 3.125rem);
+
+  /* Spacing (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+
+  /* Radius: hierarchy, not one value for everything */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+
+  /* Brand: deep navy */
+  --navy-950: #071426;
+  --navy-900: #0b1f3a;
+  --navy-800: #12305a;
+  --navy-700: #1b4478;
+  --navy-100: #e3eaf4;
+
+  /* Surfaces */
+  --canvas: #f3f5f9;
+  --surface: #ffffff;
+  --surface-muted: #f6f8fb;
+  --surface-hover: #eef2f8;
+  --border: #e4e9f1;
+  --border-strong: #d0d8e5;
+
+  /* Text */
+  --text: #0f1b2d;
+  --text-muted: #55657c;
+  --text-faint: #7a8799;
+
+  /* Actions */
+  --primary: #0b1f3a;
+  --primary-hover: #12305a;
+  --primary-contrast: #ffffff;
+  --focus: #2f6fde;
+  --nav-active-bg: #e8eef8;
+  --nav-active-text: #0b1f3a;
+
+  /* Semantic values */
+  --positive: #0b8a4d;
+  --positive-soft: #e5f5ec;
+  --negative: #d92d3a;
+  --negative-soft: #fdebed;
+  --warning: #a86a00;
+  --warning-fill: #f5a524;
+  --warning-soft: #fff3d9;
+  --info: #2f6fde;
+  --info-soft: #e7effc;
+  --usd: #6e56cf;
+  --usd-soft: #eeeafb;
+
+  /* Hero (balance) card */
+  --hero-bg: linear-gradient(155deg, #17427a 0%, #0b1f3a 58%, #071426 100%);
+  --hero-text: #ffffff;
+  --hero-muted: rgba(255, 255, 255, 0.68);
+  --hero-positive: #62e3a4;
+  --hero-negative: #ff9aa2;
+  --hero-chip: rgba(255, 255, 255, 0.12);
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgba(11, 31, 58, 0.04), 0 10px 28px -14px rgba(11, 31, 58, 0.14);
+  --shadow-pop: 0 12px 40px -8px rgba(11, 31, 58, 0.28), 0 2px 6px rgba(11, 31, 58, 0.08);
+  --scrim: rgba(7, 20, 38, 0.5);
+
+  /* Chart */
+  --chart-grid: #e8edf4;
+  --tooltip-bg: #0b1f3a;
+  --tooltip-text: #ffffff;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration: 220ms;
+
+  /* Layout */
+  --sidebar-width: 256px;
+  --topbar-height: 68px;
+  --bottom-nav-height: 64px;
+  --page-gutter: clamp(1rem, 0.4rem + 2.6vw, 2rem);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --canvas: #0a1322;
+  --surface: #111d31;
+  --surface-muted: #15243b;
+  --surface-hover: #1a2b45;
+  --border: #1f2f4a;
+  --border-strong: #2c4265;
+
+  --text: #e9eff8;
+  --text-muted: #9db0cb;
+  --text-faint: #7186a5;
+
+  --primary: #e9eff8;
+  --primary-hover: #ffffff;
+  --primary-contrast: #0b1f3a;
+  --focus: #6ea2ff;
+  --nav-active-bg: #1a2b45;
+  --nav-active-text: #ffffff;
+
+  --positive: #3fd48c;
+  --positive-soft: rgba(63, 212, 140, 0.14);
+  --negative: #ff7d88;
+  --negative-soft: rgba(255, 125, 136, 0.14);
+  --warning: #ffbf4d;
+  --warning-fill: #f5a524;
+  --warning-soft: rgba(245, 165, 36, 0.15);
+  --info: #6ea2ff;
+  --info-soft: rgba(110, 162, 255, 0.15);
+  --usd: #a898f7;
+  --usd-soft: rgba(168, 152, 247, 0.16);
+
+  --hero-bg: linear-gradient(155deg, #1d4f92 0%, #12305a 55%, #0c2242 100%);
+
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 0 12px 30px -16px rgba(0, 0, 0, 0.6);
+  --shadow-pop: 0 16px 48px -8px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --scrim: rgba(3, 8, 16, 0.66);
+
+  --chart-grid: #1f2f4a;
+  --tooltip-bg: #e9eff8;
+  --tooltip-text: #0b1f3a;
+}

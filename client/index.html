@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uz" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#F3F5F9" />
+    <meta name="description" content="Finora: pulingizni nazorat qiling, xarajatlaringizni tushuning, yaxshi moliyaviy odatlarni shakllantiring." />
+    <title>Finora</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <!-- Applies the saved theme before first paint (no flash). Must stay a classic script. -->
+    <script src="js/theme-init.js"></script>
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages/dashboard.css" />
+    <link rel="stylesheet" href="css/pages/hub.css" />
+    <link rel="stylesheet" href="css/pages/transactions.css" />
+    <link rel="stylesheet" href="css/pages/categories.css" />
+    <link rel="stylesheet" href="css/pages/plans.css" />
+    <link rel="stylesheet" href="css/pages/statistics.css" />
+    <link rel="stylesheet" href="css/pages/exchange.css" />
+    <link rel="stylesheet" href="css/pages/budgets.css" />
+    <link rel="stylesheet" href="css/pages/goals.css" />
+    <link rel="stylesheet" href="css/pages/auth.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+
+    <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Chart.js, jsPDF va uning autoTable plaginI serverdan lokal beriladi (CDN yoʻq).
+         Deferred skriptlar modullardan oldin, hujjatdagi tartibda ishga tushadi. -->
+    <script defer src="/vendor/chart.js/chart.umd.js"></script>
+    <script defer src="/vendor/jspdf/jspdf.umd.min.js"></script>
+    <script defer src="/vendor/jspdf-autotable/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p class="boot" role="status">Finora yuklanmoqda&hellip;</p>
+    </div>
+    <noscript>Finora ishlashi uchun JavaScript kerak. Iltimos, uni brauzeringizda yoqing.</noscript>
+  </body>
+</html>

@@ -1,0 +1,453 @@
+/* ==========================================================================
+   pages/dashboard.css
+   The layout responds to the width of the dashboard itself (container queries),
+   not the viewport, so it stays correct next to either sidebar width.
+   ========================================================================== */
+
+.dash-wrap {
+  container: dash / inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.dash {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+.dash > * {
+  min-width: 0;
+}
+
+@container dash (min-width: 600px) {
+  .dash { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dash__balance, .dash__savings, .dash__insights, .dash__weekly, .dash__rate, .dash__recent, .dash__categories { grid-column: 1 / -1; }
+}
+
+@container dash (min-width: 960px) {
+  .dash { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .dash__balance { grid-column: span 6; grid-row: span 2; }
+  .dash__income, .dash__expense { grid-column: span 3; }
+  .dash__savings { grid-column: span 6; }
+  .dash__insights { grid-column: span 12; }
+  .dash__weekly { grid-column: span 8; }
+  .dash__rate { grid-column: span 4; }
+  .dash__recent { grid-column: span 7; }
+  .dash__categories { grid-column: span 5; }
+}
+
+/* ---------- Balance (hero) ---------- */
+
+.balance {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-6);
+  min-height: 260px;
+  padding: var(--space-6);
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--hero-bg);
+  color: var(--hero-text);
+  box-shadow: 0 24px 48px -28px rgba(7, 20, 38, 0.7);
+}
+
+.balance__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--hero-muted);
+}
+
+.balance__value {
+  margin-top: var(--space-2);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+
+.balance__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.balance__change {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px var(--space-3) 4px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--hero-chip);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--hero-positive);
+}
+
+.balance__change.is-down {
+  color: var(--hero-negative);
+}
+
+.balance__change span {
+  color: var(--hero-muted);
+  font-weight: 600;
+}
+
+.balance__equivalent {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--hero-muted);
+}
+
+.balance__trend {
+  margin: 0 calc(var(--space-6) * -1) calc(var(--space-6) * -1);
+}
+
+.balance__trend-caption {
+  padding: 0 var(--space-6);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--hero-muted);
+}
+
+/* ---------- Sparkline ---------- */
+
+.sparkline {
+  width: 100%;
+  height: var(--sparkline-height, 72px);
+  overflow: visible;
+}
+
+.sparkline__line {
+  fill: none;
+  stroke: var(--sparkline-color, currentColor);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ---------- Stat cards ---------- */
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 124px;
+}
+
+.stat__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.stat__chip {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+}
+
+.stat__chip--positive { background: var(--positive-soft); color: var(--positive); }
+.stat__chip--negative { background: var(--negative-soft); color: var(--negative); }
+.stat__chip--info { background: var(--info-soft); color: var(--info); }
+
+.stat__value {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.stat__note {
+  margin-top: auto;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.stat__rate {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: auto;
+}
+
+.stat__rate .progress {
+  flex: 1;
+}
+
+.stat__rate-label {
+  flex: none;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+/* ---------- Weekly overview ---------- */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+
+.legend__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.legend__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--legend-color);
+}
+
+.legend__value {
+  padding-left: calc(10px + var(--space-2));
+  font-weight: 800;
+  color: var(--text);
+}
+
+.weekly__header {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.chart-box {
+  position: relative;
+  height: clamp(220px, 32vw, 300px);
+}
+
+/* ---------- Recent transactions ---------- */
+
+.tx-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.tx-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border);
+}
+
+.tx-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.tx-row:last-child {
+  padding-bottom: 0;
+}
+
+.tx-row__icon,
+.cat-row__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--category-color, var(--text-faint)) 16%, transparent);
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.tx-row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.tx-row__title,
+.tx-row__side-top {
+  font-weight: 700;
+}
+
+.tx-row__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tx-row__sub {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.tx-row__side {
+  flex: none;
+  text-align: right;
+}
+
+.tx-row__amount {
+  font-weight: 800;
+}
+
+/* ---------- Spending by category ---------- */
+
+.cat-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cat-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cat-row__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: 6px;
+}
+
+.cat-row__name {
+  font-weight: 700;
+}
+
+.cat-row__amount {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cat-row__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.cat-row__bar .progress {
+  flex: 1;
+}
+
+.cat-row__percent {
+  width: 3.2em;
+  text-align: right;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ---------- Exchange rate card ---------- */
+
+.rate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.rate__pair {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.rate__chip {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--usd-soft);
+  color: var(--usd);
+  font-weight: 800;
+}
+
+.rate__value {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.rate__change {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.rate__trend {
+  --sparkline-color: var(--usd);
+  --sparkline-height: 64px;
+  color: var(--usd);
+}
+
+.rate__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.rate__updated {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ---------- Skeleton layout ---------- */
+
+.dash-skeleton-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.balance__spark {
+  color: var(--hero-positive);
+  --sparkline-color: currentColor;
+  --sparkline-height: 84px;
+}
+
+.balance__spark.is-down {
+  color: var(--hero-negative);
+}
+
+.stat__label {
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.page-header > .page-header__subtitle:last-child {
+  margin-top: 0;
+}

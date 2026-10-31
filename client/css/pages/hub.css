@@ -1,0 +1,114 @@
+/* ==========================================================================
+   pages/hub.css - "Profile and more" hub and placeholder pages
+   ========================================================================== */
+
+.hub {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.hub__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.hub__link:hover {
+  border-color: var(--border-strong);
+}
+
+.hub__link:active {
+  transform: scale(0.99);
+}
+
+.hub__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--nav-active-bg);
+  color: var(--focus);
+}
+
+.hub__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hub__title {
+  font-weight: 700;
+}
+
+.hub__hint {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.hub__chevron {
+  color: var(--text-faint);
+}
+
+.hub__section {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-md);
+}
+
+.hub__note {
+  margin-top: var(--space-6);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+.placeholder {
+  max-width: 560px;
+  margin: var(--space-8) auto;
+}
+
+/* ---------- Hisob kartasi (Profil sahifasi tepasida) ---------- */
+
+.account-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.account-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-card__name {
+  font-weight: 700;
+  font-size: var(--text-md);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-card__email,
+.account-card__meta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.account-card--guest .account-card__guest-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-hover);
+  color: var(--text-muted);
+}
